@@ -11,6 +11,8 @@ In order to pass an authorization while opening an index page for the first time
 
 On the client side I created js/customers.js which runs all client side functionality including AJAX.
 
+Page with RSS feeds flow can be found in the common menu as well as others pages. This app is able to print feeds chosen by a user.
+
 @Mike Silberg
 
 kochemirov@gmail.com
