@@ -330,7 +330,6 @@ class CustomersController extends AbstractActionController{
             }
             return new JsonModel($this->data_edit);
         }else{
-            runFireBug('two');
             switch ($request->getUri()->getQuery()){
                 case 'call':
                     $this->view_edit = array(
