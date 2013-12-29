@@ -1,0 +1,101 @@
+<?php
+$this->headTitle($title);
+?>
+<h2><?php echo $this->escapeHtml($title); ?></h2>
+<br />
+<a href="<?php echo $this->url('customers', array('action'=>'Index'));?>">&larr; Customers List</a>
+<br /><br />
+<table class="table cust-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if ($add_type == 1){ ?>
+        <tr>
+            <td>
+                <br />
+                * <span class="fname-lbl">First Name</span>
+            </td>
+            <td>
+                <br />
+                <input type="text" name="fname" class="add-field fname" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                * <span class="lname-lbl">Last Name</span>
+            </td>
+            <td>
+                <input type="text" name="lname" class="add-field lname" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                * <span class="phone-lbl">Phone</span>
+            </td>
+            <td>
+                <input type="text" name="phone" class="add-field phone" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="addr-lbl">Address</span>
+            </td>
+            <td>
+                <input type="text" name="addr" class="add-field addr" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="status-lbl">Status</span>
+            </td>
+            <td>
+                <input type="text" name="status" class="add-field status" />
+            </td>
+        </tr>
+    <?php }elseif($add_type == 2){ ?>
+        <tr>
+            <td>
+                <br />
+                * <span class="cname-select-lbl">Customer</span>
+            </td>
+            <td>
+                <br />
+                <select class="cname-select">
+                    <option value="empty">please select one</option>
+                    <?php
+                        foreach ($customers_names as $key => $val){
+                            print "<option value=\"$key\">$val</option>";
+                        }
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                * <span class="call-subj-lbl">Subject</span>
+            </td>
+            <td>
+                <input type="text" name="lname" class="add-field call-subj" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                * <span class="call-cont-lbl">Content</span>
+            </td>
+            <td>
+                <input type="text" name="phone" class="add-field call-cont" />
+            </td>
+        </tr>
+    <?php } ?>
+    </tbody>
+</table>
+<p />
+<input type="button" value="<?php echo $this->escapeHtml('Add') ?>" name="addnewone" class="ui-button <?php echo $cbtn_class ?>" />
+<br /><br />
+* &mdash; required fields
+<p />
+

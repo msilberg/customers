@@ -1,0 +1,126 @@
+<?php
+$this->headTitle($title);
+?>
+<h2><?php echo $this->escapeHtml($title); ?></h2>
+<br />
+<div class="edit-list">
+    <a class="back2-clist" href="<?php echo $this->url('customers', array('action'=>'Index'));?>">&larr; Customers List</a>
+    <?php if ($edit_type == 1){ ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($customers_arr as $val){ ?>
+                <tr>
+                    <td><?php print $val->getFirstName()." ".$val->getLastName() ?></td>
+                    <td>
+                        <a class="edit-customer" id="<?php print $val->getId() ?>">Edit</a>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    <?php }else{ ?>
+        <br /><br /><span class="cname-select-prelbl">Please first select a</span>&nbsp;<span class="cname-select-lbl">Customer</span>&nbsp;&nbsp;
+        <select class="cname-edit-select cname-select">
+            <option value="empty">select one</option>
+            <?php
+            foreach ($customers_names as $key => $val){
+                print "<option value=\"$key\">$val</option>";
+            }
+            ?>
+        </select>
+        <br />
+        <table class="table calls-edit-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <br />
+    <?php } ?>
+</div>
+<div class="edit-form">
+    <a class="back2-edit-<?php print $type_name ?>-list">&larr; Back to <?php print ucfirst($type_name) ?> List</a><br /><br />
+    <table class="table cust-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if ($edit_type == 1){ ?>
+            <tr>
+                <td>
+                    <br />
+                    * <span class="fname-lbl">First Name</span>
+                </td>
+                <td>
+                    <br />
+                    <input type="text" name="fname" class="edit-field fname" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    * <span class="lname-lbl">Last Name</span>
+                </td>
+                <td>
+                    <input type="text" name="lname" class="edit-field lname" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    * <span class="phone-lbl">Phone</span>
+                </td>
+                <td>
+                    <input type="text" name="phone" class="edit-field phone" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="editr-lbl">Address</span>
+                </td>
+                <td>
+                    <input type="text" name="editr" class="edit-field addr" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="status-lbl">Status</span>
+                </td>
+                <td>
+                    <input type="text" name="status" class="edit-field status" />
+                </td>
+            </tr>
+        <?php }elseif($edit_type == 2){ ?>
+            <tr>
+                <td>
+                    * <span class="call-subj-lbl">Subject</span>
+                </td>
+                <td>
+                    <input type="text" name="call-subj" class="edit-field call-subj" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    * <span class="call-cont-lbl">Content</span>
+                </td>
+                <td>
+                    <input type="text" name="call-cont" class="edit-field call-cont" />
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <br />
+    <input type="button" value="<?php echo $this->escapeHtml('Save') ?>" name="save-edit" class="ui-button <?php echo $save_btn_class ?>" />
+</div>

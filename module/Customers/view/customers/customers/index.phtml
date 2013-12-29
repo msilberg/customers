@@ -1,0 +1,40 @@
+<?php
+$title = 'Customers';
+$this->headTitle($title);
+?>
+<script type="text/javascript">
+    var mydata = <?php print json_encode($customer) ?>;
+    $(document).ready(function(){
+        $("#list485").jqGrid({
+            data: mydata,
+            datatype: "local",
+            height: 'auto',
+            rowNum: 10,
+            rowList: [10,20],
+            colNames:['Customer', 'Phone', 'Address', 'Subject', 'Content'],
+            colModel:[
+                {name:'cname',index:'cname', width:100, editable:true},
+                {name:'phone',index:'phone', width:90, editable:true},
+                {name:'address',index:'address', width:100, editable:true},
+                {name:'subject',index:'subject', width:100, editable:true},
+                {name:'content',index:'content', width:100, editable:true}
+            ],
+            pager: "#plist485",
+            viewrecords: true,
+            sortname: 'cname',
+            grouping: true,
+            groupingView : {
+                groupField : ['cname'],
+                groupColumnShow : [true],
+                groupText : ['<b>{0} - {1} Item(s)</b>'],
+                groupCollapse : true,
+                groupOrder: ['asc']
+            },
+            caption: "Customers data. Click on the customer to view his or her calls"
+        });
+    });
+</script>
+<h2><?php echo $this->escapeHtml($title); ?></h2>
+<p>
+<table id="list485"></table><div id="plist485"></div>
+</p>
