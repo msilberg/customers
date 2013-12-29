@@ -1,4 +1,13 @@
 <?php
+if (!isset($_SERVER['PHP_AUTH_USER'])) {
+    header('WWW-Authenticate: Basic realm="Admin Authorization"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Sorry, only authorized users can access a site data';
+    exit;
+}elseif ($_SERVER['PHP_AUTH_USER'] == 'customer' && $_SERVER['PHP_AUTH_PW'] == 'qwerty'){
+    echo "<p>Welcome {$_SERVER['PHP_AUTH_USER']}.</p>";
+}
+
 $title = 'Customers';
 $this->headTitle($title);
 ?>
@@ -38,3 +47,4 @@ $this->headTitle($title);
 <p>
 <table id="list485"></table><div id="plist485"></div>
 </p>
+

@@ -1,0 +1,15 @@
+CREATE TABLE t_calls (id INT AUTO_INCREMENT NOT NULL, customer_id INT DEFAULT NULL, subject VARCHAR(255) NOT NULL, content VARCHAR(255) NOT NULL, INDEX IDX_64123AF69395C3F3 (customer_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+CREATE TABLE t_customer (id INT AUTO_INCREMENT NOT NULL, firstName VARCHAR(255) NOT NULL, lastName VARCHAR(255) NOT NULL, phone VARCHAR(255) NOT NULL, address VARCHAR(255) DEFAULT NULL, status VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+ALTER TABLE t_calls ADD CONSTRAINT FK_64123AF69395C3F3 FOREIGN KEY (customer_id) REFERENCES t_customer (id);
+INSERT INTO `t_customer` (`id`, `firstName`, `lastName`, `phone`, `address`, `status`) VALUES
+(1, 'John', 'Smith', '1165032168', 'New Foundlend Ave. 21', 'active'),
+(2, 'Alan', 'Turing', '65468748654', 'Palm st. 58', 'active'),
+(3, 'Winston', 'Churchill', '4658465465', 'Downing st.', 'active');
+INSERT INTO `t_calls` (`id`, `customer_id`, `subject`, `content`) VALUES
+(1, 1, 'Subject A', 'Lorem ipsum'),
+(2, 1, 'Subject B', 'Lorem ipsum'),
+(3, 2, 'Subject C', 'Lorem ipsum'),
+(4, 2, 'Subject D', 'Lorem ipsum'),
+(5, 2, 'Subject E', 'Lorem ipsum'),
+(6, 3, 'Subject F', 'Lorem ipsum'),
+(7, 3, 'Subject G', 'Lorem ipsum');
